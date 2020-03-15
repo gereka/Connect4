@@ -1,10 +1,12 @@
-#include <iostream>
+#include "window.h"
 
-#include "exampleclass.h"
+int main() {
+  const int window_width = 600;
+  const int window_height = 550;
 
-int main()
-{
-  Adder a;
-  std::cout << "5 + 1 = " << a.AddOne(5) << std::endl;
-  return 0;
+  MyWindow *window = new MyWindow(window_width,window_height, "Connect 4");
+  window->show();
+
+
+  return Fl::run();
 }

@@ -1,13 +1,13 @@
 #include <gmock/gmock.h>
 
-#include "../src/exampleclass.h"
+#include "../src/board.h"
 
 using namespace testing;
 
-class AdderFix : public Test
+class BoardFix : public Test
 {
 public:
-  Adder adder;
+  Board b;
 
   //constructor
   // void SetUp() override
@@ -15,15 +15,9 @@ public:
 };
 
 
-TEST(ExampleClass, Adder)
+TEST_F(BoardFix, InitsToZero)
 {
-  Adder a;
-  ASSERT_EQ(a.AddOne(5), 6);
-}
-
-
-
-TEST_F(AdderFix, AddOne)
-{
-  ASSERT_EQ(adder.AddOne(6), 7);
+  for (int i=0; i<b.numrows_; i++)
+    for (int j=0; j<b.numcols_; j++)
+      EXPECT_EQ(b.get(i,j), 0);
 }
